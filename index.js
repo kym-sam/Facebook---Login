@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const CFonts = require('cfonts');
 const app = express();
-const port = 3000;
+const port = 8080;
 
 app.use(bodyParser.json());
 
@@ -21,7 +21,7 @@ app.post('/ipinfo', (req, res) => {
     res.sendStatus(200);
 });
 
-const banner = CFonts.say('facebook', {
+CFonts.say('facebook', {
     font: 'pallet',              
     align: 'left',             
     colors: ['yellowBright', 'white'], 
@@ -33,7 +33,6 @@ const banner = CFonts.say('facebook', {
 });
 
 app.listen(port, () => {
-    banner
     console.log('[-] Server connected!')
     console.log(`[-] Server is running on http://localhost:${port}`);
 });
